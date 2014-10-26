@@ -1,0 +1,59 @@
+﻿body {
+}
+.PalestraMenu {
+    padding-left: 60px;
+    padding-right: 50px;
+    font-family: Segoe UI;
+    font-size: 15px;
+}
+.Menu {
+    background-color: #452f51;
+   border-radius: 5px;
+}
+.PalestraItems li {
+    padding: 30px;
+    display: inline-block;
+}
+.PalestraItems li:hover {
+    background-color: #9f93a5;
+}
+.PalestraItems li a {
+    color: #fff;
+    text-decoration: none;
+}
+.PalestraItems li a:hover {
+    color: #912cbd;
+}
+.col-md-3 {
+    padding-top: 10px;
+}
+.formulario {
+   width:250px;padding:5px;border-radius:5px;background-color:#4ebf6b;float: left;
+}
+.formulario img {
+    float: left;
+    padding: 10px;
+}
+.divCadastrar {
+     box-shadow: inset 0px 0px 20px 0px #6c75ef;
+}
+.divPPalestras {
+    box-shadow: inset 0px 0px 20px 0px #6c75ef;
+}
+.divPPalestras a {
+    text-decoration: none;
+    color:  #0617f6;
+}
+.divPPalestras a:hover{
+    color: #207536;
+}
+.divPPalestrantes {
+    box-shadow: inset 0px 0px 20px 0px #32a950;
+}
+.divPPalestrantes a {
+    color:  #0617f6;
+    text-decoration: none;
+}
+.divPPalestrantes a:hover{
+    color: #31f80a;
+}

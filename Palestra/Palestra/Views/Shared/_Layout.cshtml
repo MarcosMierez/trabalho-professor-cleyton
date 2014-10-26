@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Palestra.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body style="background-color:#f5f1f7">
+    <h1>Gerenciador de Palestras</h1>
+    <nav class="PalestraMenu">
+        <div class="Menu">
+            <ul class="PalestraItems">
+                <li><a href="@Url.Action("Index","Home")">Pagina Inicial</a></li>
+                <li><a href="@Url.Action("Index","Palest")">Palestras</a></li>
+                <li><a href="@Url.Action("Index","Palestrante")">Palestrantes</a></li>
+                <li><a href="@Url.Action("Index","Sala")">Salas</a></li>
+                <li><a href="@Url.Action("Index","Trilha")">Trilhas</a></li>
+            </ul>
+        </div>
+        
+        
+    </nav>
+    <div class="container">
+
+        @RenderBody()
+    </div>
+    <footer style="text-align: center;padding-top: 30px">Gerenciador de Palestras</footer>
+</body>
+</html>

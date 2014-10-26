@@ -1,0 +1,75 @@
+﻿@using Palestra.Models
+@model Palestra.Models.Palestras
+
+<div style="padding-left: 500px;">
+    <div style="width: 400px;padding:100px;border-radius: 20px;background-color:#9ba1eb" class="divCadastrar">
+        <p style="font-family:cursive;font-size: 16px">Registro de Palestras</p>
+        <form action="" method="post">
+            @Html.ValidationSummary(true)
+            <input type="hidden" value="ID" />
+            <div class="form-group">
+                <label for="Titulo">Titulo</label>
+                <input class="form-control" id="Titulo" placeholder="Digite um Titulo">
+                @Html.ValidationMessageFor(x => x.Titulo)
+            </div>
+            <div class="form-group">
+                <label for="Nome">Nome</label>
+                <input class="form-control" id="Nome" placeholder="Digite um Nome">
+                @Html.ValidationMessageFor(x => x.Nome)
+            </div>
+            <div class="form-group">
+                <label for="Codigo">Codigo</label>
+                <input class="form-control" id="Codigo" placeholder="Digite um Codigo">
+                @Html.ValidationMessageFor(x => x.Codigo)
+            </div>
+            <div class="form-group">
+                <label for="Descricao">Descricao</label>
+                <textarea id="Descricao" class="form-control" placeholder="Digite a descricao"></textarea>
+                @Html.ValidationMessageFor(x=>x.Descricao)
+            </div>
+            <div class="form-group">
+                <label for="Nivel">Nivel</label>
+                <input class="form-control" id="Nivel" placeholder="Digite um Nivel">
+                @Html.ValidationMessageFor(x => x.Nivel)
+            </div>
+            <div class="form-group">
+                <label for="Horario">Horario</label>
+                <input class="form-control" id="Horario" placeholder="Digite a data da palestra">
+            </div>
+            <div class="form-group">
+                <label for="Trilha">Trilha</label>
+                @Html.DropDownList("Trilha.ID",(SelectList)ViewBag.Trilhas, new {@class ="form-control"})
+            </div>
+            <div class="form-group">
+                <label>Sala</label>
+                @Html.DropDownList("Sala.ID", (SelectList)ViewBag.Salas, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Palestrantes</label>
+                @Html.DropDownList("Palestrante.ID", (SelectList)ViewBag.Palestrantes, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-default" id="Register">Registrar</button>
+        </form>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $("#Nome").change(function() {
+        var nome = document.getElementById("Nome").value;
+        validate(nome);
+    });
+
+    function validate(nome) {
+
+        $.ajax({
+            url: '@Url.Action("Validador","Sala")',
+            type: 'post',
+            data: { _nome: nome },
+            success: function(data) {
+                window.alert(data);
+            }
+        });
+
+    }
+</script></div>

@@ -1,0 +1,17 @@
+﻿@model Palestra.Models.Palestrante
+
+<div style="padding-left: 500px;">
+    <div style="width: 400px;padding:100px;border-radius: 20px;background-color:#9ba1eb">
+        
+        <p style="font-family:cursive;font-size: 16px ;color: #f32424">Remover Palestrante</p>
+        <form role="form" action="/" method="post">
+            <input type="hidden" value="ID" />
+            <div class="form-group">
+                <label for="Nome">Nome</label>
+                <input class="form-control" id="Nome" placeholder="Nome da Sala">
+                <span id="validate"></span>
+            </div>
+            <button type="button" class="btn btn-danger">Deletar</button>
+        </form>
+    </div>
+</div>
