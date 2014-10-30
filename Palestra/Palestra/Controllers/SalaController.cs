@@ -27,7 +27,7 @@ namespace Palestra.Controllers
         }
         public ActionResult Cadastrar()
         {
-            return View();
+            return View(new Sala());
         }
         [HttpPost]
         public ActionResult Cadastrar(Sala sala)
@@ -35,15 +35,13 @@ namespace Palestra.Controllers
             if (ModelState.IsValid)
             {
                 appSala.Inserir(sala);
-                RedirectToAction("Index", "Sala");
+               return RedirectToAction("Index", "Sala");
             }
-            return View();
-        }//cadastrar sala
+            return View(sala);
+        }
         public ActionResult Editar(string id)
         {
             var sala = appSala.ListarPorId(id);
-            if (sala == null)
-                return HttpNotFound();
             return View(sala);
         }
         [HttpPost]
@@ -52,25 +50,21 @@ namespace Palestra.Controllers
             if (ModelState.IsValid)
             {
                 appSala.Alterar(sala);
+                return RedirectToAction("Index", "Sala");
             }
-            return View();
+            return View(sala);
         }
-
-        public ActionResult Detalhe(string id)
-        {
-            appSala.ListarPorId(id);
-            return View();
-        }
-
         public ActionResult Delete(string id)
         {
-            appSala.Excluir(id);
-            return View();
+            var sala = appSala.ListarPorId(id);
+            return View(sala);
+        }
+        [HttpPost]
+        public ActionResult Delete(Sala sala)
+        {
+            appSala.Excluir(sala.ID);
+            return RedirectToAction("Index","Sala");
         }
 
-        public JsonResult Validador(string nome)
-        {
-            return Json("Funfooo!!!");
-        }
     }
 }

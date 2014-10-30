@@ -1,29 +1,23 @@
 ﻿@model List<Palestra.Models.Sala>
-<div style="padding: 30px;">
-    <div style="padding-bottom: 10px">
-        <a href="@Url.Action("Cadastrar","Sala")"><button type="button" class="btn btn-success">Nova Sala</button></a>
-    </div>
-    <table class="table">
+<div style="padding-bottom: 10px">
+    <a href="@Url.Action("Cadastrar","Sala")"><button type="button" class="btn btn-success">Nova Sala</button></a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Salas</div>
+    <table class="table table-bordered">
         <tr>
-            <th>
-                Sala
-            </th>
-            <th>
-                Nome
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>Nome</th>
+            <th colspan="3">Numero</th>
         </tr>
 
-        @foreach(var sala in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>@sala.Nome</td>
-                <td>@sala.Numero</td>
-                <td><a href="@Url.Action("Detalhe","Sala")" style="text-decoration: none;" class="glyphicon glyphicon-tasks"></a></td>
-                <td><a href="@Url.Action("Editar","Sala")" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
-                <td><a href="@Url.Action("Delete","Sala")" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
+                <td>@item.Nome</td>
+                <td>@item.Numero</td>
+                <td><a href="@Url.Action("Editar", "Sala", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+                <td><a href="@Url.Action("Delete", "Sala", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
             </tr>
 
         }

@@ -106,10 +106,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplicacao\PalestranteAplicacao.cs" />
     <Compile Include="Aplicacao\SalaAplicacao.cs" />
+    <Compile Include="Aplicacao\TrilhaAplicacao.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PalestController.cs" />
+    <Compile Include="Controllers\palestranteAplicacao.cs" />
     <Compile Include="Controllers\SalaController.cs" />
     <Compile Include="Controllers\PalestranteController.cs" />
     <Compile Include="Controllers\TrilhaController.cs" />
@@ -137,22 +140,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Sala\Index.cshtml" />
     <Content Include="Views\Sala\Editar.cshtml" />
-    <Content Include="Views\Sala\Detalhe.cshtml" />
     <Content Include="Views\Sala\Delete.cshtml" />
     <Content Include="Views\Trilha\Cadastrar.cshtml" />
     <Content Include="Views\Trilha\Editar.cshtml" />
     <Content Include="Views\Trilha\Index.cshtml" />
-    <Content Include="Views\Trilha\Detalhe.cshtml" />
     <Content Include="Views\Trilha\Delete.cshtml" />
     <Content Include="Views\Palestrante\Cadastrar.cshtml" />
     <Content Include="Views\Palestrante\Delete.cshtml" />
-    <Content Include="Views\Palestrante\Detalhe.cshtml" />
     <Content Include="Views\Palestrante\Editar.cshtml" />
     <Content Include="Views\Palestrante\Index.cshtml" />
     <Content Include="Views\Palest\Index.cshtml" />
     <Content Include="Views\Palest\Cadastrar.cshtml" />
     <Content Include="Views\Palest\Delete.cshtml" />
-    <Content Include="Views\Palest\Detalhe.cshtml" />
     <Content Include="Views\Palest\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

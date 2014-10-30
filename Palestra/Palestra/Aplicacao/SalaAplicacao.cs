@@ -16,7 +16,6 @@ namespace Palestra.Aplicacao
         {
             contexto = new Contexto();
         }
-
         public List<Sala> Listar()
         {
             var salas = new List<Sala>();
@@ -47,7 +46,7 @@ namespace Palestra.Aplicacao
         }
         public int Alterar(Sala sala)
         {
-            const string strQuery = "update Sala set(Nome = @Nome , Numero = @Numero) Where Id = @Id)";
+            const string strQuery = "UPDATE  Sala set Nome = @Nome , Numero = @Numero Where Id = @Id";
             var parametros = new Dictionary<string, object>()
             {
                 {"Id",sala.ID},
@@ -58,7 +57,7 @@ namespace Palestra.Aplicacao
         }
         public int Excluir(string id)
         {
-            const string strQuery = "delete from sala Where Id = @Id)";
+            const string strQuery = "delete from Sala Where ID = @ID";
             var parametros = new Dictionary<string, object>()
             {
                 {"Id",id}
@@ -67,10 +66,10 @@ namespace Palestra.Aplicacao
         }
         public Sala ListarPorId(string id)
         {
-            const string strQuery = "SELECT Id , Nome FROM Sala where Id = @Id";
+            const string strQuery = "SELECT Id , Nome ,Numero FROM Sala where Id = @ID";
             var parametros = new Dictionary<string, object>()
             {
-                {"Id",id}
+                {"ID",id}
             };
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
             var sala = new Sala

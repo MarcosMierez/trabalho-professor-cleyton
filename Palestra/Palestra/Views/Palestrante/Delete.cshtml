@@ -1,17 +1,16 @@
 ﻿@model Palestra.Models.Palestrante
-
-<div style="padding-left: 500px;">
-    <div style="width: 400px;padding:100px;border-radius: 20px;background-color:#9ba1eb">
-        
-        <p style="font-family:cursive;font-size: 16px ;color: #f32424">Remover Palestrante</p>
-        <form role="form" action="/" method="post">
-            <input type="hidden" value="ID" />
+<div class="panel panel-default">
+    <div class="panel-heading">Deseja realmente remover este Palestrante ?</div>
+    <form action="" method="post">
+        <div class="formularioCadastro">
             <div class="form-group">
-                <label for="Nome">Nome</label>
-                <input class="form-control" id="Nome" placeholder="Nome da Sala">
-                <span id="validate"></span>
+                <label for="@Model.Nome">Nome</label>
+                <input type="text" id="Nome" class="form-control" name="Nome" value="@Model.Nome" />
+                <br />
+                <label for="@Model.Twitter">Twitter</label>
+                <input type="text" id="Nome" class="form-control" name="Nome" value="@Model.Twitter" />
             </div>
-            <button type="button" class="btn btn-danger">Deletar</button>
-        </form>
-    </div>
-</div>
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </div>
+    </form>
+    </di

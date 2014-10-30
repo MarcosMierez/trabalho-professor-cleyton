@@ -1,42 +1,34 @@
-﻿@model List<Palestra.Models.Palestras>
-<div style="padding: 30px;">
-    <div style="padding-bottom: 10px">
-        <a href="@Url.Action("Cadastrar","Palest")"><button type="button" class="btn btn-success">Nova Palestra</button></a>
-    </div>
-    <table class="table">
+﻿@model List<Palestra.Models.Palestras>    
+<div style="padding-bottom: 10px">
+    <a href="@Url.Action("Cadastrar","Palest")"><button type="button" class="btn btn-success">Nova Palestra</button></a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Palestras</div>
+<table class="table table-bordered">
+    <tr>
+        <th>Titulo</th>
+        <th>Nome</th>
+        <th>Trilha</th>
+        <th>Nivel</th>
+        <th>Descriçao</th>
+        <th colspan="4">Horario</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>Titulo</th>
-            <th>Nome</th>
-            <th>Codigo</th>
-            <th>Nivel</th>
-            <th>Descriçao</th>
-            <th>Palestrante</th>
-            <th>Sala</th>
-            <th>Trilha</th>
-            <th>Horario</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <td>@item.Titulo</td>
+            <td>@item.Nome</td>
+            <td>nome TRilha</td>
+            <td>@item.Nivel</td>
+            <td>@item.Descricao</td>
+            <td>@item.Horario.ToString("dd/MM/yyyy")</td>
+            <td><a href="@Url.Action("Editar", "Palest", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+            <td><a href="@Url.Action("Delete", "Palest", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
         </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Titulo</td>
-                <td>@item.Nome</td>
-                <td>@item.Codigo</td>
-                <td>@item.Nivel</td>
-                <td>@item.Descricao</td>
-                <td>@item.Palestrante.Nome</td>
-                <td>@item.Sala.Numero</td>
-                <td>@item.Trila.Nome</td>
-                <td>@item.Horario.ToString("dd/MM/yyyy")</td>
-                <td><a href="@Url.Action("Detalhe","Palest",new {id =@item.ID})" style="text-decoration:none;" class="glyphicon glyphicon-tasks"></a></td>
-                <td><a href="@Url.Action("Editar", "Palest", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
-                <td><a href="@Url.Action("Delete", "Palest", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
-            </tr>
+    }
 
-        }
-
-    </table>
+</table>
 </div>

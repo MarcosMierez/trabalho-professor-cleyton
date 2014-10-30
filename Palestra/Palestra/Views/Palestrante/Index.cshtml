@@ -1,32 +1,25 @@
 ﻿@model List<Palestra.Models.Palestrante>
-<div style="padding: 30px;">
-    <div style="padding-bottom: 10px">
-        <a href="@Url.Action("Cadastrar","Palestrante")"><button type="button" class="btn btn-success">Novo Palestrante</button></a>
-    </div>
-    <table class="table">
+<div style="padding-bottom: 10px">
+    <a href="@Url.Action("Cadastrar","Palestrante")"><button type="button" class="btn btn-success">Nova Palestrante</button></a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Palestrantes</div>
+    <table class="table table-bordered">
         <tr>
-            <th>
-                Nome
-            </th>
-            <th>
-                Biografia
-            </th>
-            <th>
-                Twitter
-            </th>
-            <th></th>
-            <th></th>
+            <th>Nome</th>
+            <th>Twitter</th>
+            <th colspan="4">Biografia</th>
         </tr>
 
-        @foreach (var palestrante in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>@palestrante.Nome</td>
-                <td>@palestrante.Bio</td>
-                <td>@palestrante.Twitter</td>
-                <td><a href="@Url.Action("Detalhe","Palestrante",new {id =@palestrante.ID})" style="text-decoration:none;" class="glyphicon glyphicon-tasks"></a></td>
-                <td><a href="@Url.Action("Editar", "Palestrante", new { id = @palestrante.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
-                <td><a href="@Url.Action("Delete", "Palestrante", new { id = @palestrante.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
+                <td>@item.Nome</td>
+                <td>@item.Twitter</td>
+                <td>@item.Bio</td>
+                <td><a href="@Url.Action("Editar", "Palestrante", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+                <td><a href="@Url.Action("Delete", "Palestrante", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
             </tr>
 
         }

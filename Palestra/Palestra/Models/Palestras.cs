@@ -20,7 +20,7 @@ namespace Palestra.Models
         [Required]
         public string  Nivel { get; set; }
         public Palestrante Palestrante { get; set; }
-        public Trilha Trila { get; set; }
+        public Trilha Trilha { get; set; }
         public Sala Sala { get; set; }
         public DateTime Horario { get; set; }
     }

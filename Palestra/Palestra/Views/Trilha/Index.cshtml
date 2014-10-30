@@ -1,25 +1,22 @@
-﻿<div style="padding: 30px;">
-    <div style="padding-bottom: 10px">
-        <a href="@Url.Action("Cadastrar","Trilha")"><button type="button" class="btn btn-success">Nova Trilha</button></a>
-    </div>
-    
-    <table class="table">
+﻿@model List<Palestra.Models.Trilha>
+<div style="padding-bottom: 10px">
+    <a href="@Url.Action("Cadastrar","Trilha")"><button type="button" class="btn btn-success">Nova Trilha</button></a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Trilhas</div>
+    <table class="table table-bordered">
         <tr>
-            <th>
-                Trilha
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="4">Nome</th>
+
         </tr>
 
-        @for (int i = 0; i < 3; i++)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>Desenvolvimento</td>
-                <td><a href="@Url.Action("Detalhe","Trilha")" style="text-decoration: none;" class="glyphicon glyphicon-tasks"></a></td>
-                <td><a href="@Url.Action("Editar","Trilha")" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
-                <td><a href="@Url.Action("Delete","Trilha")" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
+                <td>@item.Nome</td>
+                <td><a href="@Url.Action("Editar", "Trilha", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+                <td><a href="@Url.Action("Delete", "Trilha", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
             </tr>
 
         }

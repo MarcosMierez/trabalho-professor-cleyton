@@ -26,7 +26,7 @@ namespace Palestra.Controllers
                     Nivel = "100",
                     Palestrante = new Palestrante {Bio = "nao tem", Nome = "Marcos Vinicius"},
                     Sala = new Sala {Nome = "Sala 2", Numero = "2"},
-                    Trila = new Trilha {Nome = "Desenvolvimento"}
+                    Trilha = new Trilha {Nome = "Desenvolvimento"}
                 }
             };
             return View(lista);
@@ -79,11 +79,10 @@ namespace Palestra.Controllers
                 Nivel = "100",
                 Palestrante = new Palestrante {Bio = "nao tem", Nome = "Marcos Vinicius"},
                 Sala = new Sala {Nome = "Sala 2", Numero = "2"},
-                Trila = new Trilha {Nome = "Desenvolvimento"}
+                Trilha = new Trilha {Nome = "Desenvolvimento"}
             };
             return View(palestra);
         }
-
         public ActionResult Detalhe(string id)
         {
             var palestra = new Palestras
@@ -96,11 +95,10 @@ namespace Palestra.Controllers
                 Nivel = "100",
                 Palestrante = new Palestrante { Bio = "nao tem", Nome = "Marcos Vinicius" },
                 Sala = new Sala { Nome = "Sala 2", Numero = "2" },
-                Trila = new Trilha { Nome = "Desenvolvimento" }
+                Trilha = new Trilha { Nome = "Desenvolvimento" }
             };
             return View(palestra);
         }
-
         public ActionResult Delete(string id)
         {
             var palestra = new Palestras
@@ -113,7 +111,7 @@ namespace Palestra.Controllers
                 Nivel = "100",
                 Palestrante = new Palestrante { Bio = "nao tem", Nome = "Marcos Vinicius" },
                 Sala = new Sala { Nome = "Sala 2", Numero = "2" },
-                Trila = new Trilha { Nome = "Desenvolvimento" }
+                Trilha = new Trilha { Nome = "Desenvolvimento" }
             };
             return View(palestra);
         }
