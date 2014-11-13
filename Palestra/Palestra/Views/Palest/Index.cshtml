@@ -8,19 +8,21 @@
 <table class="table table-bordered">
     <tr>
         <th>Titulo</th>
-        <th>Nome</th>
+        <th>Palestrante</th>
         <th>Trilha</th>
+        <th>Sala</th>
         <th>Nivel</th>
         <th>Descriçao</th>
-        <th colspan="4">Horario</th>
+        <th colspan="4">Data</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.Titulo</td>
-            <td>@item.Nome</td>
-            <td>nome TRilha</td>
+            <td>@item.Palestrante.Nome</td>
+            <td>@item.Trilha.Nome</td>
+            <td>@item.Sala.Nome</td>
             <td>@item.Nivel</td>
             <td>@item.Descricao</td>
             <td>@item.Horario.ToString("dd/MM/yyyy")</td>

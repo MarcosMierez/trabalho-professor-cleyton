@@ -1,16 +1,16 @@
 ﻿@model Palestra.Models.Palestras
-
-<div style="padding-left: 500px;">
-    <div style="width: 400px;padding:100px;border-radius: 20px;background-color:#9ba1eb">
-        
-        <p style="font-family:cursive;font-size: 16px ;color: #f32424">Remover Palestra</p>
-        <form role="form" action="/" method="post">
-            <input type="hidden" value="ID" />
+<div class="panel panel-default">
+    <div class="panel-heading">Deseja realmente remover essa Palestra ?</div>
+    <form action="" method="post">
+        <div class="formularioCadastro">
             <div class="form-group">
-                <label for="Nome">Nome</label>
-                <input class="form-control" id="Nome" value="@Model.Nome">
+                <label for="@Model.Nome">Palestra</label>
+                <input type="text" id="Nome" class="form-control" name="Nome" value="@Model.Nome" />
+                <br />
+                <label for="@Model.Titulo">Titulo</label>
+                <input type="text" id="Titulo" class="form-control" name="Titulo" value="@Model.Titulo" />
             </div>
-            <button type="button" class="btn btn-danger">Deletar</button>
-        </form>
-    </div>
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </div>
+    </form>
 </div>

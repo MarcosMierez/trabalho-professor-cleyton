@@ -72,6 +72,10 @@ namespace Palestra.Aplicacao
                 {"ID",id}
             };
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
+            
+            if (!linhas.Any())
+                return new Sala();
+            
             var sala = new Sala
             {
                 ID = linhas[0]["Id"],

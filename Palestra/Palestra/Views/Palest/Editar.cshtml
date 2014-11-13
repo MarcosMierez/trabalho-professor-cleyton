@@ -1,17 +1,45 @@
 ﻿@model Palestra.Models.Palestras
+<div class="panel panel-default">
+    <div class="panel-heading">Alterar Registro-Palestra</div>
 
-<div style="padding-left: 500px;">
-    <div style="width: 400px;padding:100px;border-radius: 20px;background-color:#9ba1eb">
-        <p style="font-family:cursive;font-size: 16px">Alterar Registro</p>
-        <form role="form" action="/" method="post">
-            <input type="hidden" value="ID" />
+    @Html.ValidationSummary(true)
+    <form action="" method="post" novalidate>
+        <div class="formularioCadastro">
             <div class="form-group">
-                <label for="Nome">Nome</label>
-                <input class="form-control" value="@Model.Titulo">
-                <span id="validate"></span>
+                <label for="@Model.Nome">Nome</label>
+                <input type="text" id="Nome" class="form-control" name="Nome" value="@Model.Nome" />
+                @Html.ValidationMessageFor(x => x.Nome)
+                <br />
+                <label for="Titulo">Titulo</label>
+                <input type="text" id="Titulo" class="form-control" name="Titulo" value="@Model.Titulo" />
+                @Html.ValidationMessageFor(x => x.Titulo)
+                <br />
+                <label for="Codigo">Codigo</label>
+                <input type="text" id="Codigo" class="form-control" name="Codigo" value="@Model.Codigo" />
+                @Html.ValidationMessageFor(x => x.Codigo)
+                <br />
+                <label for="Descricao">Descricao</label>
+                <input type="text" id="Descricao" class="form-control" name="Descricao" value="@Model.Descricao" />
+                @Html.ValidationMessageFor(x => x.Descricao)
+                <br />
+                <label for="Nivel">Nivel</label>
+                <input type="text" id="Nivel" class="form-control" name="Nivel" value="@Model.Nivel" />
+                @Html.ValidationMessageFor(x => x.Nivel)
+                <label for="Horario">Horario</label>
+                <input type="text" id="Horario" class="form-control" name="Horario" value="@Model.Horario.Date.ToString("dd/mm/yyyy")" />
+                @Html.ValidationMessageFor(x => x.Horario)
+                <br />
+                @Html.DropDownList("PalestranteID", (SelectList)ViewBag.palestrantes, new { @class="form-control"})
+                <br />
+                @Html.DropDownList("SalaID", (SelectList)ViewBag.salas, new { @class = "form-control" })
+                <br />
+                @Html.DropDownList("TrilhaID", (SelectList)ViewBag.trilhas, new { @class = "form-control" })
+        
             </div>
-            <button type="submit" class="btn btn-default" id="Register">Modificar</button>
-        </form>
-    </div>
+            <br />
+
+            <button type="submit" class="btn btn-success">Alterar</button>
+        </div>
+    </form>
 </div>
 

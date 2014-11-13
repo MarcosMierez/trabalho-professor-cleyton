@@ -78,6 +78,8 @@ namespace Palestra.Aplicacao
                 {"ID",id}
             };
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
+            if (!linhas.Any())
+                return new Palestrante();
             var palestrante = new Palestrante
             {
                 ID = linhas[0]["Id"],

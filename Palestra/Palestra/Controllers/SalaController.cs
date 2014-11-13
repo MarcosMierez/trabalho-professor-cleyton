@@ -35,8 +35,10 @@ namespace Palestra.Controllers
             if (ModelState.IsValid)
             {
                 appSala.Inserir(sala);
+                this.Flash("Salvo com sucesso");
                return RedirectToAction("Index", "Sala");
             }
+            this.Flash("Favor preenha todos os campos", LoggerEnum.Error);
             return View(sala);
         }
         public ActionResult Editar(string id)
@@ -50,8 +52,10 @@ namespace Palestra.Controllers
             if (ModelState.IsValid)
             {
                 appSala.Alterar(sala);
+                this.Flash("Sala alterada com sucesso");
                 return RedirectToAction("Index", "Sala");
             }
+            
             return View(sala);
         }
         public ActionResult Delete(string id)
@@ -63,6 +67,8 @@ namespace Palestra.Controllers
         public ActionResult Delete(Sala sala)
         {
             appSala.Excluir(sala.ID);
+            this.Flash("Sala removida com sucesso");
+
             return RedirectToAction("Index","Sala");
         }
 

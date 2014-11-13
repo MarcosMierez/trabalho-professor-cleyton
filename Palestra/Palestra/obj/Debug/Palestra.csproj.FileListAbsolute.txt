@@ -18,3 +18,34 @@ C:\Users\Marcos Vinicius\Desktop\TDC\Palestra\Palestra\obj\Debug\Palestra.dll
 C:\Users\Marcos Vinicius\Desktop\TDC\Palestra\Palestra\obj\Debug\Palestra.pdb
 C:\Users\Marcos Vinicius\Desktop\TDC\Palestra\Palestra\bin\MongoDB.Driver.dll
 C:\Users\Marcos Vinicius\Desktop\TDC\Palestra\Palestra\bin\MySql.Data.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\Palestra.dll.config
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\Palestra.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\Palestra.pdb
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\MongoDB.Driver.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\MySql.Data.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Helpers.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Mvc.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Razor.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Webpages.Deployment.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Webpages.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Webpages.Razor.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Razor.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Webpages.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Webpages.Deployment.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Webpages.Razor.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Helpers.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Mvc.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\obj\Debug\Palestra.csprojResolveAssemblyReference.cache
+C:\GitAplicacao\TDC\Palestra\Palestra\obj\Debug\Palestra.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\obj\Debug\Palestra.pdb
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\Newtonsoft.Json.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Net.Http.Formatting.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Http.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Http.WebHost.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\Newtonsoft.Json.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Net.Http.Formatting.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Http.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Http.WebHost.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Cors.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Http.Cors.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\System.Web.Http.Cors.xml
