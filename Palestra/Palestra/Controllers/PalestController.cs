@@ -30,15 +30,7 @@ namespace Palestra.Controllers
             return View(lista);
         }
         public ActionResult Cadastrar()
-        {
-            var palestrantes = appPalestrantes.Listar();
-            ViewBag.palestrantes = new SelectList(palestrantes, "ID", "Nome");
-
-            var salas = appSalas.Listar();
-            ViewBag.salas = new SelectList(salas, "ID", "Nome");
-
-           var trilhas = appTrilhas.Listar();
-           ViewBag.trilhas = new SelectList(trilhas, "ID", "Nome");
+        {    MontaSelectList(new Palestras());
             return View(new Palestras());
         }
         [HttpPost]
@@ -51,28 +43,13 @@ namespace Palestra.Controllers
                return RedirectToAction("Index", "Palest");
             }
             this.Flash("Favor preenha todos os campos", LoggerEnum.Error);
-            var palestrantes = appPalestrantes.Listar();
-            ViewBag.palestrantes = new SelectList(palestrantes, "ID", "Nome");
-
-            var salas = appSalas.Listar();
-            ViewBag.salas = new SelectList(salas, "ID", "Nome");
-
-            var trilhas = appTrilhas.Listar();
-            ViewBag.trilhas = new SelectList(trilhas, "ID", "Nome");
+            MontaSelectList(palestra);
             return View(palestra);
         }//cadastrar sala
         public ActionResult Editar(string id)
         {
-            var palestrantes = appPalestrantes.Listar();
-            ViewBag.palestrantes = new SelectList(palestrantes, "ID", "Nome",id);
-
-            var salas = appSalas.Listar();
-            ViewBag.salas = new SelectList(salas, "ID", "Nome",id);
-
-            var trilhas = appTrilhas.Listar();
-            ViewBag.trilhas = new SelectList(trilhas, "ID", "Nome",id);
             var palestraTemp = appPalestras.ListarPorId(id);
-
+            MontaSelectList(palestraTemp);
             return View(palestraTemp);
         }
         [HttpPost]
@@ -93,6 +70,17 @@ namespace Palestra.Controllers
             appPalestras.Excluir(palestras.ID);
             this.Flash("Palestra removida com sucessso");
             return RedirectToAction("Index", "Palest");
+        }
+        private void MontaSelectList(Palestras palestra)
+        {
+            var palestrantes = appPalestrantes.Listar();
+            ViewBag.palestrantes = new SelectList(palestrantes, "ID", "Nome",palestra.PalestranteID);
+
+            var salas = appSalas.Listar();
+            ViewBag.salas = new SelectList(salas, "ID", "Nome",palestra.SalaID);
+
+            var trilhas = appTrilhas.Listar();
+            ViewBag.trilhas = new SelectList(trilhas, "ID", "Nome",palestra.TrilhaID);
         }
     }
 }
