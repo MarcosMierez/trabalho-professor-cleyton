@@ -1,29 +1,5 @@
 ﻿body {
 }
-.PalestraMenu {
-    padding-left: 60px;
-    padding-right: 50px;
-    font-family: Segoe UI;
-    font-size: 15px;
-}
-.Menu {
-    background-color: #030444;
-   border-radius: 5px;
-}
-.PalestraItems li {
-    padding: 30px;
-    display: inline-block;
-}
-.PalestraItems li:hover {
-    background-color: #9f93a5;
-}
-.PalestraItems li a {
-    color: #fff;
-    text-decoration: none;
-}
-.PalestraItems li a:hover {
-    color: #912cbd;
-}
 .col-md-3 {
     padding-top: 10px;
 }

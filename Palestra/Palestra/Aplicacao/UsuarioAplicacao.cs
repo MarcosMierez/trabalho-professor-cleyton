@@ -35,11 +35,12 @@ namespace Palestra.Aplicacao
         }
         public int Inserir(Usuario usuario)
         {
-            const string strQuery = "insert into Usuario (Id,Nome,Email,Permissao) values (@Id,@Nome,@Email,@Permissao)";
+            const string strQuery = "insert into Usuario (Id,Nome,Senha,Email,Permissao) values (@Id,@Nome,@Senha,@Email,@Permissao)";
             var parametros = new Dictionary<string, object>()
             {
                 {"Id",usuario.ID},
                 {"Nome",usuario.Nome},
+                {"Senha",usuario.Senha},
                 {"Email",usuario.Email},
                 {"Permissao",usuario.Permissao}
             };
@@ -52,7 +53,7 @@ namespace Palestra.Aplicacao
             {
                 {"Id",usuario.ID},
                 {"Nome",usuario.Nome},
-                {"Numero",usuario.Email},
+                {"Email",usuario.Email},
                 {"Permissao",usuario.Permissao}
             };
             return contexto.ExecutaComando(strQuery, parametros);
@@ -87,7 +88,27 @@ namespace Palestra.Aplicacao
             };
             return usuario;
         }
+        public Usuario Logar(string Login, string Senha)
+        {
+            const string strQuery = "SELECT Id , Nome ,Email ,Permissao FROM Usuario where Email = @Email and Senha = @Senha";
+            var parametros = new Dictionary<string, object>()
+            {
+                {"Email",Login},
+                {"Senha",Senha}
+            };
+            var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
 
+            if (!linhas.Any())
+                return new Usuario();
 
-}
+            var usuario = new Usuario
+            {
+                ID = linhas[0]["Id"],
+                Nome = linhas[0]["Nome"],
+                Email = linhas[0]["Email"],
+                Permissao = linhas[0]["Permissao"]
+            };
+            return usuario;
+        }
+    }
 }

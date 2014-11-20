@@ -1,0 +1,30 @@
+﻿@model List<Palestra.Models.Usuario>
+<div style="padding-bottom: 10px">
+    <a href="@Url.Action("Cadastrar","Usuario")"><button type="button" class="btn btn-success">Novo Usuario</button></a>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Usuarios</div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Nome</th>
+            <th colspan="3">Email</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Email</td>
+                <td><a href="@Url.Action("Editar", "Usuario", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+                <td>
+                    <a href="@Url.Action("Delete", "Usuario", new { id = @item.ID })" class="glyphicon glyphicon-trash"></a>
+                </td>
+                    
+</tr>
+
+        }
+
+    </table>
+</div>
