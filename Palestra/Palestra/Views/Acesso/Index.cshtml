@@ -1,0 +1,12 @@
+﻿@model Palestra.Models.Usuario
+<div class="panel panel-info">
+    <div class="panel-heading">Dados do Usuario</div>
+    <div class="panel-body">
+        <div class="container"></div>
+        <p>Nome  : @Model.Nome</p><br />
+        <p>Email : @Model.Email</p>
+        <br />  
+        <a href="@Url.Action("Editar", "Usuario", new { id = Model.ID })"><button class="btn btn-info">Editar Conta</button></a>
+        <a href="@Url.Action("MudarSenha", "Acesso", new { id=Model.ID})"><button class="btn btn-warning">Mudar Senha</button></a>
+    </div>
+</div>

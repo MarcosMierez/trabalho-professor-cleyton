@@ -1,0 +1,115 @@
+﻿<h2>Alerar Senha</h2>
+<form action="" method="post" id="EditorSenhaForm" >
+    <label>Senha Antiga</label>
+    <input type="password" value="" name="Senha" id="Senha" class="form-control" />
+    <span id="ValidadorSenha"></span>
+    <label>Nova Senha</label>
+    <input type="password" name="NovaSenha" id="NovaSenha" class="form-control" />
+
+    <div class="editor-label">
+        @Html.Label("Confirmar Senha")
+    </div>
+    <div class="editor-field">
+        <input type="password" id="ConfirmarSenha" class="form-control" />
+        <span id="ConfirmarSenhaValidacao"></span>
+    </div>
+    <br />
+    <button class="btn btn-success" id="MudarSenha" type="submit">Alterar</button>
+</form>
+
+<script>
+
+    var _senhaValidacao;
+    var _novaSenhaValidacao;
+    var _novaSenha;
+    $("#Senha").change(function () {
+        var _senha = document.getElementById("Senha").value;
+        verifica(_senha);
+    })
+    $("#ConfirmarSenha").change(function () {
+        ConfirmarSenha();
+    })
+    function verifica(_senha) {
+        $.ajax({
+            url: '@Url.Action("verificaSenha","Acesso")',
+            type: 'post',
+            data: { senha: _senha },
+            success: function (data) {
+                switch (data) {
+                    case "valida":
+                        document.getElementById("ValidadorSenha").innerHTML = "";
+                        _senhaValidacao = true;
+                        break;
+                        return;
+                    case "invalida":
+                        document.getElementById("ValidadorSenha").innerHTML = "Senha Incorreta </br>";
+                        $("#Senha").focus();
+                        _senhaValidacao = false;
+                    default:
+
+                }
+            }
+        })
+    }
+
+    function ConfirmarSenha() {
+        var ConfirmarValue = document.getElementById("ConfirmarSenha").value;
+        var EmailValue = document.getElementById("NovaSenha").value;
+        var EmailValidacao = document.getElementById("ConfirmarSenhaValidacao").value;
+
+        if (ConfirmarValue != EmailValue) {
+            document.getElementById("ConfirmarSenhaValidacao").innerHTML = "As senhas não coincidem.";
+            $("#ConfirmarSenha").focus();
+            _novaSenhaValidacao = false;
+        }
+        else {
+            document.getElementById("ConfirmarSenhaValidacao").innerHTML = "";
+            _novaSenhaValidacao = true;
+            _novaSenha = document.getElementById("NovaSenha").value;
+        }
+    }
+
+    $("#MudarSenha").click(function () {
+        if (document.getElementById("Senha").value == "" || document.getElementById("NovaSenha").value == "" || document.getElementById("ConfirmarSenha").value == "" ) {
+            return alert("preencha todos os campos");
+        }
+        if (_senhaValidacao == false || _novaSenhaValidacao == false) {
+            return alert("Senha Invadida");
+        }
+        redirecSenhaforDb(_novaSenha);
+    })
+
+    $("#ValidadorSenha").blur(function () {
+        ValidadorSenha();
+    })
+    //text changes
+    $("#ValidadorSenha").on('input', function () {
+        ValidadorSenha();
+    })
+
+    $("#ConfirmarSenha").blur(function () {
+        ConfirmarSenha();
+    })
+    //text changes
+    $("#ConfirmarSenha").on('input', function () {
+        ConfirmarSenha();
+    })
+
+    function redirecSenhaforDb(_novaSenha) {
+        $.ajax({
+            url: '@Url.Action("ConfirmarMudancadeSenha", "Acesso")',
+            type: 'post',
+            data: { novaSenha: _novaSenha },
+            success: function (data) {
+                switch (data) {
+                    case "valida":
+                        alert("Senha Alterada com sucesso");
+                        return;
+                        break;
+                    default:
+
+                }
+            }
+        });
+    }
+</script>

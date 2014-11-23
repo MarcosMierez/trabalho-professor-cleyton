@@ -13,10 +13,11 @@ namespace ExemploLoginIdentity
     {
         public void Configuration(IAppBuilder app)
         {
+          
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Login")
+                LoginPath = new PathString("/Acesso/Login")
             });
         }
     }

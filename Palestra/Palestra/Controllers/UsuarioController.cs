@@ -65,7 +65,6 @@ namespace Palestra.Controllers
         {
             appUsuario.Excluir(usuario.ID);
             this.Flash("usuario removido com sucesso");
-
             return RedirectToAction("Index","Usuario");
         }
 

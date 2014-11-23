@@ -11,6 +11,7 @@ using Palestra.Aplicacao;
 
 namespace Palestra.Controllers
 {
+    [Authorize]
     public class PalestController : Controller
     {
         private readonly PalestraAplicacao appPalestras;
@@ -29,10 +30,12 @@ namespace Palestra.Controllers
             var lista = appPalestras.ListarOtimizado();
             return View(lista);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Cadastrar()
         {    MontaSelectList(new Palestras());
             return View(new Palestras());
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Cadastrar(Palestras palestra)
         {
@@ -46,12 +49,14 @@ namespace Palestra.Controllers
             MontaSelectList(palestra);
             return View(palestra);
         }//cadastrar sala
+        [Authorize(Roles = "Admin")]
         public ActionResult Editar(string id)
         {
             var palestraTemp = appPalestras.ListarPorId(id);
             MontaSelectList(palestraTemp);
             return View(palestraTemp);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Editar(Palestras palestras)
         {
@@ -59,11 +64,13 @@ namespace Palestra.Controllers
             this.Flash("Palestra alterada com sucessso");
             return RedirectToAction("Index", "Palest");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             var tempPalestras = appPalestras.ListarPorId(id);
             return View(tempPalestras);
-        }   
+        }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(Palestras palestras)
         {

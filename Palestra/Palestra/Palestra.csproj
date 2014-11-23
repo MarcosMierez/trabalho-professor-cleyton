@@ -138,7 +138,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\hell.jpg" />
+    <Content Include="Content\Images\eb6656fccc302842dc4c_770x440_0_0.jpg" />
+    <Content Include="Content\Images\Palestras-Motivacionais1.jpg" />
     <Content Include="Content\Palestra.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -217,6 +218,8 @@
     <Content Include="Views\Usuario\Editar.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Acesso\Login.cshtml" />
+    <Content Include="Views\Acesso\MudarSenha.cshtml" />
+    <Content Include="Views\Acesso\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

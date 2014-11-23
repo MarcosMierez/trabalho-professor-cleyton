@@ -11,17 +11,20 @@ namespace Palestra.Controllers
     public class AcessoController : Controller
     {
         private readonly UsuarioAplicacao appUsuario;
-        
         public AcessoController()
         {
             appUsuario = new UsuarioAplicacao();
         }
         public ActionResult Index()
         {
-            return View();
+            var usuario = Seguranca.Usuario();
+            return View(usuario);
         }
-        public ActionResult Login()
-        {
+        public ActionResult Login(){
+            if (User.Identity.IsAuthenticated)
+            {
+                this.Flash("Esta pagina é somente para admistradores", LoggerEnum.Error);
+            }
             return View();
         }
         [HttpPost]
@@ -32,7 +35,7 @@ namespace Palestra.Controllers
             if (!string.IsNullOrEmpty(usuario.Email))
             {
                 Seguranca.GerearSessaoDeUsuario(usuario);
-                this.Flash("Bem Vindo ");
+                this.Flash("Bem Vindo "+usuario.Nome);
                 return RedirectToAction("Index", "Home");
             }
             this.Flash("Usuario ou senha Incorretos", LoggerEnum.Warning);
@@ -43,6 +46,21 @@ namespace Palestra.Controllers
             Seguranca.DestruirSessaoDeUsuario();
             this.Flash("Usuario Deslogado", LoggerEnum.Info);
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult MudarSenha()
+        {
+            return View();
+        }
+        public JsonResult verificaSenha(string senha)
+        {
+            var usuarioTemp = Seguranca.Usuario();
+            
+            return Json((string)appUsuario.checaSenha(usuarioTemp.ID,senha));
+        }
+        public JsonResult ConfirmarMudancadeSenha(string novaSenha)
+        {
+
+            return Json((string)appUsuario.mudaSenha(Seguranca.Usuario().ID,novaSenha));         
         }
     }
 }

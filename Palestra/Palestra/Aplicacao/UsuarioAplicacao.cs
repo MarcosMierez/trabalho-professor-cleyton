@@ -27,7 +27,7 @@ namespace Palestra.Aplicacao
                 {
                     ID = linha["ID"],
                     Nome = linha["Nome"],
-                    Email =linha["Email"]
+                    Email = linha["Email"]
                 };
                 usuarios.Add(tempUsuario);
             }
@@ -75,16 +75,16 @@ namespace Palestra.Aplicacao
                 {"ID",id}
             };
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
-            
+
             if (!linhas.Any())
                 return new Usuario();
-            
+
             var usuario = new Usuario
             {
                 ID = linhas[0]["Id"],
                 Nome = linhas[0]["Nome"],
                 Email = linhas[0]["Email"],
-                Permissao =linhas[0]["Permissao"]
+                Permissao = linhas[0]["Permissao"]
             };
             return usuario;
         }
@@ -109,6 +109,38 @@ namespace Palestra.Aplicacao
                 Permissao = linhas[0]["Permissao"]
             };
             return usuario;
+        }
+        public string checaSenha(string ID, string Senha)
+        {
+            const string strQuery = "select ID , Senha from Usuario Where ID = @ID and Senha =@Senha";
+            var parametros = new Dictionary<string, object>()
+            {
+                {"ID",ID},
+                {"Senha",Senha}
+            };
+            var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
+            if (linhas.Count != 0)
+            {
+                string variavelSenha = linhas[0]["Senha"];
+                string variavelId = linhas[0]["ID"];
+                return "valida";
+            }
+            return "invalida";
+
+        }
+
+        public string mudaSenha(string id, string Novasenha)
+        {
+            const string strQuery = "UPDATE  Usuario set Senha= @Novasenha where ID =@ID";
+            var parametros = new Dictionary<string, object>()
+            {
+                {"Novasenha",Novasenha},
+                {"ID",id}
+            };
+            var x = contexto.ExecutaComando(strQuery, parametros);
+            if (x == 1)
+                return "valida";
+                return "invalida";
         }
     }
 }
