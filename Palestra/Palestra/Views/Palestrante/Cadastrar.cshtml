@@ -2,7 +2,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Cadastrar Palestrante</div>
     @Html.ValidationSummary(true)
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="formularioCadastro">
             <div class="form-group">
                 <label for="@Model.Nome">Nome</label>
@@ -16,6 +16,9 @@
                 <label for="Bio">Biografia</label>
                 <input type="text" id="Bio" class="form-control" name="Bio" />
                 @Html.ValidationMessageFor(x => x.Bio)
+                <br />
+                <label for="arquivo">Foto</label>
+                <input type="file" id="arquivo" name="arquivo" />
             </div>
             <br />
             

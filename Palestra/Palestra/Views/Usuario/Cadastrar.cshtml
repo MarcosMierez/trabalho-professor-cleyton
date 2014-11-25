@@ -22,10 +22,32 @@
                 @Html.ValidationMessageFor(x => x.Email)
             </div>
 
-            <div class="form-group">
-                <label for="@Model.Permissao">Permissao</label>
-                <input type="text" id="Permissao" class="form-control" name="Permissao" value="@Model.Permissao" />
-                @Html.ValidationMessageFor(x => x.Permissao)
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="trilha_ver" name="Permissao[]" id="Permissao[]" />Trilha
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="palestra_ver" name="Permissao[]" id="Permissao[]" />Palestra
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="palestrante_ver" name="Permissao[]" id="Permissao[]" />Palestrante
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="usuario_ver" name="Permissao[]" id="Permissao[]" />Usuario
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="usuario_ver" name="Permissao[]" id="Permissao[]" />Sala
+                </label>
             </div>
             <button type="submit" class="btn btn-success">Cadastrar</button>
         </div>

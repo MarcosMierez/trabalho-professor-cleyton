@@ -24,23 +24,23 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <ul class="nav navbar-nav">
-                            @if (User.IsInRole("palestra_vizualizar"))
+                            @if (User.IsInRole("palestra_vizualizar") || User.IsInRole("Admin"))
                             {
                                 <li><a href="@Url.Action("Index","Palest")">Palestras</a></li>
                             }
-                            @if (User.IsInRole("palestrante_vizualizar"))
+                            @if (User.IsInRole("palestrante_vizualizar") || User.IsInRole("Admin"))
                             {
                                 <li><a href="@Url.Action("Index","Palestrante")">Palestrantes</a></li> }
 
-                            @if (User.IsInRole("sala_vizualizar"))
+                            @if (User.IsInRole("sala_vizualizar") || User.IsInRole("Admin"))
                             {
                                 <li><a href="@Url.Action("Index","Sala")">Salas</a></li>
                             }
-                            @if (User.IsInRole("trilha_vizualizar"))
+                            @if (User.IsInRole("trilha_vizualizar") || User.IsInRole("Admin"))
                             {
                                 <li><a href="@Url.Action("Index","Trilha")">Trilha</a></li>
                             }
-                            @if (User.IsInRole("usuario_vizualizar"))
+                            @if (User.IsInRole("Admin"))
                             {
                                 <li><a href="@Url.Action("Index","Usuario")">Usuarios</a></li>
                             }

@@ -18,8 +18,11 @@
             <tr>
                 <td>@item.Nome</td>
                 <td>@item.Numero</td>
-                <td><a href="@Url.Action("Editar", "Sala", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
-                <td><a href="@Url.Action("Delete", "Sala", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td><a href="@Url.Action("Editar", "Sala", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+                    <td><a href="@Url.Action("Delete", "Sala", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-remove"></a></td>
+                }
             </tr>
 
         }

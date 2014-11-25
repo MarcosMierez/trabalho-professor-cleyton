@@ -25,6 +25,7 @@ namespace Palestra.Controllers
             appTrilhas = new TrilhaAplicacao();
             appSalas = new SalaAplicacao();
         }
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var lista = appPalestras.ListarOtimizado();

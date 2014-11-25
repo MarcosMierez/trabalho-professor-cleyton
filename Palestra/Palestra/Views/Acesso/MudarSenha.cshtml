@@ -1,5 +1,5 @@
 ﻿<h2>Alerar Senha</h2>
-<form action="" method="post" id="EditorSenhaForm" >
+<form action="" method="post" id="EditorSenhaForm">
     <label>Senha Antiga</label>
     <input type="password" value="" name="Senha" id="Senha" class="form-control" />
     <span id="ValidadorSenha"></span>
@@ -70,7 +70,7 @@
     }
 
     $("#MudarSenha").click(function () {
-        if (document.getElementById("Senha").value == "" || document.getElementById("NovaSenha").value == "" || document.getElementById("ConfirmarSenha").value == "" ) {
+        if (document.getElementById("Senha").value == "" || document.getElementById("NovaSenha").value == "" || document.getElementById("ConfirmarSenha").value == "") {
             return alert("preencha todos os campos");
         }
         if (_senhaValidacao == false || _novaSenhaValidacao == false) {

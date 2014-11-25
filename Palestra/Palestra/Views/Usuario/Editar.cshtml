@@ -18,24 +18,24 @@
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="trilha_ver" name="Permissoes[]"/>Trilha
+                    <input type="checkbox" value="trilha_ver" name="Permissao[]" id="Permissao[]" @if(Model.Permissao.Contains("trilha_ver")){<text>checked</text>}>Trilha
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="palestra_ver" name="Permissoes[]" />Palestra
-                </label>
-            </div>
-
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="palestrante_ver" name="Permissoes[]" />Palestrante
+                    <input type="checkbox" value="palestra_ver" name="Permissao[]" id="Permissao[]" @if (Model.Permissao.Contains("palestra_ver")) { <text> checked</text>} >Palestra
                 </label>
             </div>
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="usuario_ver" name="Permissoes[]" />Usuario
+                    <input type="checkbox" value="palestrante_ver" name="Permissao[]" id="Permissao[]" @if (Model.Permissao.Contains("palestrante_ver")) { <text> checked</text>} >Palestrante
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="usuario_ver" name="Permissao[]" id="Permissao[]" @if (Model.Permissao.Contains("usuario_ver")) { <text> checked</text>} >Usuario
                 </label>
             </div>
 

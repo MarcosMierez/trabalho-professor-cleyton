@@ -23,7 +23,7 @@ namespace Palestra.Controllers
         public ActionResult Login(){
             if (User.Identity.IsAuthenticated)
             {
-                this.Flash("Esta pagina é somente para admistradores", LoggerEnum.Error);
+                this.Flash("Esta açao é somente para admistradores", LoggerEnum.Error);
             }
             return View();
         }

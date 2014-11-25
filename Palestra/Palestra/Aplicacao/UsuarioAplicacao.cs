@@ -42,19 +42,19 @@ namespace Palestra.Aplicacao
                 {"Nome",usuario.Nome},
                 {"Senha",usuario.Senha},
                 {"Email",usuario.Email},
-                {"Permissao",usuario.Permissao}
+                {"Permissao",carregaPermissoes(usuario.Permissao)}
             };
             return contexto.ExecutaComando(strQuery, parametros);
-        }
+        }      
         public int Alterar(Usuario usuario)
         {
-            const string strQuery = "UPDATE  Usuario set Nome = @Nome , Email = @Email Where Id = @Id";
+            const string strQuery = "UPDATE  Usuario set Nome = @Nome , Email = @Email,Permissao = @Permissao Where Id = @Id";
             var parametros = new Dictionary<string, object>()
             {
                 {"Id",usuario.ID},
                 {"Nome",usuario.Nome},
                 {"Email",usuario.Email},
-                {"Permissao",usuario.Permissao}
+                {"Permissao",carregaPermissoes(usuario.Permissao)}
             };
             return contexto.ExecutaComando(strQuery, parametros);
         }
@@ -78,13 +78,14 @@ namespace Palestra.Aplicacao
 
             if (!linhas.Any())
                 return new Usuario();
+           
 
             var usuario = new Usuario
             {
                 ID = linhas[0]["Id"],
                 Nome = linhas[0]["Nome"],
                 Email = linhas[0]["Email"],
-                Permissao = linhas[0]["Permissao"]
+                Permissao = carregaPermissoes(linhas[0]["Permissao"])
             };
             return usuario;
         }
@@ -101,15 +102,17 @@ namespace Palestra.Aplicacao
             if (!linhas.Any())
                 return new Usuario();
 
+            var tempPermissao = linhas[0]["Permissao"].Split(',').ToList();
             var usuario = new Usuario
             {
                 ID = linhas[0]["Id"],
                 Nome = linhas[0]["Nome"],
                 Email = linhas[0]["Email"],
-                Permissao = linhas[0]["Permissao"]
+                Permissao = tempPermissao
             };
             return usuario;
         }
+
         public string checaSenha(string ID, string Senha)
         {
             const string strQuery = "select ID , Senha from Usuario Where ID = @ID and Senha =@Senha";
@@ -128,7 +131,6 @@ namespace Palestra.Aplicacao
             return "invalida";
 
         }
-
         public string mudaSenha(string id, string Novasenha)
         {
             const string strQuery = "UPDATE  Usuario set Senha= @Novasenha where ID =@ID";
@@ -141,6 +143,23 @@ namespace Palestra.Aplicacao
             if (x == 1)
                 return "valida";
                 return "invalida";
+        }
+        private static string carregaPermissoes(List<string> permissoes)
+        {
+            if (!permissoes.Any())
+            {
+                return string.Empty;
+            }
+            var tempPermissao = "";
+            foreach (var permissao in permissoes)
+            {
+                tempPermissao += permissao + ",";
+            }
+            return tempPermissao.Remove(tempPermissao.Length-1);
+        }
+        private static List<string> carregaPermissoes(string permissoes)
+        {
+            return permissoes.Split(',').ToList();
         }
     }
 }

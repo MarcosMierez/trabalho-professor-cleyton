@@ -138,8 +138,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\eb6656fccc302842dc4c_770x440_0_0.jpg" />
-    <Content Include="Content\Images\Palestras-Motivacionais1.jpg" />
     <Content Include="Content\Palestra.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -175,6 +173,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImagemHelper.cs" />
     <Compile Include="Helper\LoggerHelper.cs" />
     <Compile Include="Helper\Seguranca.cs" />
     <Compile Include="Models\Entidade.cs" />
@@ -229,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

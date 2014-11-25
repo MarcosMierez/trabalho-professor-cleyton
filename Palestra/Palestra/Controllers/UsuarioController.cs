@@ -9,10 +9,11 @@ using System.Web.Mvc;
 
 namespace Palestra.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class UsuarioController : Controller
     {
         private readonly UsuarioAplicacao appUsuario;
-        
+
         public UsuarioController()
         {
             appUsuario = new UsuarioAplicacao();
@@ -22,10 +23,12 @@ namespace Palestra.Controllers
             var listaUsers = appUsuario.Listar();
             return View(listaUsers);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Cadastrar()
         {
             return View(new Usuario());
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Cadastrar(Usuario usuario)
         {
@@ -33,39 +36,38 @@ namespace Palestra.Controllers
             {
                 appUsuario.Inserir(usuario);
                 this.Flash("Salvo com sucesso");
-               return RedirectToAction("Index", "Usuario");
+                return RedirectToAction("Index", "Usuario");
             }
             this.Flash("Favor preenha todos os campos", LoggerEnum.Error);
             return View(usuario);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Editar(string id)
         {
             var usuario = appUsuario.ListarPorId(id);
             return View(usuario);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Editar(Usuario usuario)
         {
-            if (ModelState.IsValid)
-            {
                 appUsuario.Alterar(usuario);
                 this.Flash("Usuario alterado com sucesso");
                 return RedirectToAction("Index", "Usuario");
-            }
-            
-            return View(usuario);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             var usuario = appUsuario.ListarPorId(id);
             return View(usuario);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(Usuario usuario)
         {
             appUsuario.Excluir(usuario.ID);
             this.Flash("usuario removido com sucesso");
-            return RedirectToAction("Index","Usuario");
+            return RedirectToAction("Index", "Usuario");
         }
 
     }

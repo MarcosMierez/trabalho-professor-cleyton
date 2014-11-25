@@ -15,12 +15,15 @@
         {
             <tr>
                 <td>@item.Nome</td>
-                <td><a href="@Url.Action("Editar", "Trilha", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
-                <td>
-                    <a href="@Url.Action("Delete", "Trilha", new { id = @item.ID })" class="glyphicon glyphicon-trash"></a>
-                </td>
-                    
-</tr>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td><a href="@Url.Action("Editar", "Trilha", new { id = @item.ID })" style="text-decoration: none;" class="glyphicon glyphicon-pencil"></a></td>
+                    <td>
+                        <a href="@Url.Action("Delete", "Trilha", new { id = @item.ID })" class="glyphicon glyphicon-trash"></a>
+                    </td> }
+
+
+            </tr>
 
         }
 

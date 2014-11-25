@@ -21,12 +21,7 @@ namespace Palestra.Helpers
                 new Claim(ClaimTypes.Name,usuarioLogado.Nome),
                 new Claim(ClaimTypes.Email, usuarioLogado.Email),
             };
-            var Permissoes = usuarioLogado.Permissao.Split(',');
-            foreach (var permissao in Permissoes)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, permissao));
-            }
-
+            claims.AddRange(usuarioLogado.Permissao.Select(permissao=>new Claim(ClaimTypes.Role,permissao)));
             var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
             HttpContext.Current.Request.GetOwinContext().Authentication.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
         }
