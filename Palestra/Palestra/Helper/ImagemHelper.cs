@@ -23,7 +23,7 @@ namespace Palestra.Helper
             var path = MontaPath(diretorio, nomeUnico);
 
             var imagem = new WebImage(arquivo.InputStream);
-            imagem.Resize(30, 30);
+            imagem.Resize(200, 200);
             imagem.Save(path);
 
             return nomeUnico;

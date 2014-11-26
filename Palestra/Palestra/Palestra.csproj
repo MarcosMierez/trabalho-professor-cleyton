@@ -219,6 +219,7 @@
     <Content Include="Views\Acesso\Login.cshtml" />
     <Content Include="Views\Acesso\MudarSenha.cshtml" />
     <Content Include="Views\Acesso\Index.cshtml" />
+    <Content Include="Views\Palestrante\Detalhe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

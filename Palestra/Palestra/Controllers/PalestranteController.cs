@@ -117,6 +117,11 @@ namespace Palestra.Controllers
             appPalestrante.Excluir(palestrante.ID);
             return RedirectToAction("Index", "Palestrante");
         }
+        public ActionResult Detalhe(string id)
+        {
+            var usuario=appPalestrante.ListarPorId(id);
+            return View(usuario);
+        }
     }
 
 }

@@ -16,8 +16,8 @@
         {
             <tr>
 
-                <td><img src="~/Content/Uploads/@item.Foto" width="30" height="30" /></td>
-                <td>@item.Nome</td>
+                <td><img src="~/Content/Uploads/@item.Foto" width="30" height="30" class="img-circle"/></td>
+                <td><a href="@Url.Action("Detalhe", "Palestrante", new { id=@item.ID})">@item.Nome</a></td>
                 <td>@item.Twitter</td>
                 <td>@item.Bio</td>
                 @if (User.IsInRole("Admin"))

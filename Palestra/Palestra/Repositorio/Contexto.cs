@@ -18,7 +18,7 @@ namespace Palestra.Repositorio
 
         private static string GetConnectionString()
         {
-            return ConfigurationManager.AppSettings.Get("MYSQL_URI") ?? ConfigurationManager.ConnectionStrings["TDCbd"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["TDCbd"].ConnectionString;
         }
 
         public Contexto()
