@@ -40,6 +40,8 @@ namespace Palestra.Helper
         }
         public static void ExcluirArquivo(string nome, string diretorio)
         {
+            if (string.IsNullOrEmpty(nome))
+                return;
             var arquivos = Directory.GetFiles(MontaPath(diretorio, ""));
             foreach (var fi in arquivos.Select(arquivo => new FileInfo(arquivo)).Where(fi => fi.Name.Contains(nome)))
             {

@@ -20,47 +20,24 @@ namespace Palestra.Aplicacao
             var palestrantes = new List<Palestrante>();
             const string strQuery = "SELECT ID , Nome,Bio,Twitter,Foto FROM Palestrante order by Nome";
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, null);
-            foreach (var linha in linhas)
-            {
-                var tempPalestrante = new Palestrante
-                {
-                    ID = linha["ID"],
-                    Nome = linha["Nome"],
-                    Bio=linha["Bio"],
-                    Twitter=linha["Twitter"],
-                    Foto=linha["Foto"]
-                };
-                palestrantes.Add(tempPalestrante);
-            }
-            return palestrantes;
+            return ListaPalestrantes(palestrantes, linhas);
         }
+
+        
         public int Inserir(Palestrante palestrante)
         {
             const string strQuery = "insert into Palestrante (Id,Nome,Bio,Twitter,Foto) values (@Id,@Nome,@Bio,@Twitter,@Foto)";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",palestrante.ID},
-                {"Nome",palestrante.Nome},
-                {"Bio",palestrante.Bio},
-                {"Twitter",palestrante.Twitter},
-                {"Foto",palestrante.Foto}
-
-            };
+            var parametros = SetaDadosPalestrante(palestrante);
             return contexto.ExecutaComando(strQuery, parametros);
         }
         public int Alterar(Palestrante palestrante)
         {
             const string strQuery = "UPDATE  Palestrante set Nome = @Nome, Bio = @Bio ,Twitter = @Twitter ,Foto = @Foto  Where Id = @Id";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",palestrante.ID},
-                {"Nome",palestrante.Nome},
-                {"Bio",palestrante.Bio},
-                {"Twitter",palestrante.Twitter},
-                {"Foto",palestrante.Foto}
-            };
+            var parametros = SetaDadosPalestrante(palestrante);
             return contexto.ExecutaComando(strQuery, parametros);
         }
+
+        
         public int Excluir(string id)
         {
             const string strQuery = "delete from Palestrante Where ID = @ID";
@@ -90,5 +67,35 @@ namespace Palestra.Aplicacao
             };
             return palestrante;
         }
+        private  Dictionary<string, object> SetaDadosPalestrante(Palestrante palestrante)
+        {
+            var parametros = new Dictionary<string, object>()
+            {
+                {"Id",palestrante.ID},
+                {"Nome",palestrante.Nome},
+                {"Bio",palestrante.Bio},
+                {"Twitter",palestrante.Twitter},
+                {"Foto",palestrante.Foto}
+            };
+            return parametros;
+        }
+
+private  List<Palestrante> ListaPalestrantes(List<Palestrante> palestrantes, List<Dictionary<string, string>> linhas)
+        {
+            foreach (var linha in linhas)
+            {
+                var tempPalestrante = new Palestrante
+                {
+                    ID = linha["ID"],
+                    Nome = linha["Nome"],
+                    Bio = linha["Bio"],
+                    Twitter = linha["Twitter"],
+                    Foto = linha["Foto"]
+                };
+                palestrantes.Add(tempPalestrante);
+            }
+            return palestrantes;
+        }
+
     }
 }

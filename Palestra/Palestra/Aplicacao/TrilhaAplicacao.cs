@@ -34,21 +34,13 @@ namespace Palestra.Aplicacao
         public int Inserir(Trilha trilha)
         {
             const string strQuery = "insert into Trilha (Id,Nome) values (@Id,@Nome)";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",trilha.ID},
-                {"Nome",trilha.Nome}
-            };
+            var parametros = SetaTrilhas(trilha);
             return contexto.ExecutaComando(strQuery, parametros);
-        }
+        }  
         public int Alterar(Trilha trilha)
         {
             const string strQuery = "UPDATE  Trilha set Nome = @Nome Where Id = @Id";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",trilha.ID},
-                {"Nome",trilha.Nome}
-            };
+            var parametros = SetaTrilhas(trilha);
             return contexto.ExecutaComando(strQuery, parametros);
         }
         public int Excluir(string id)
@@ -76,6 +68,16 @@ namespace Palestra.Aplicacao
                 Nome = linhas[0]["Nome"]
             };
             return trilha;
+        }
+
+        private  Dictionary<string, object> SetaTrilhas(Trilha trilha)
+        {
+            var parametros = new Dictionary<string, object>()
+            {
+                {"Id",trilha.ID},
+                {"Nome",trilha.Nome}
+            };
+            return parametros;
         }
     }
 }

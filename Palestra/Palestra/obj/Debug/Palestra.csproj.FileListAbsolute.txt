@@ -64,3 +64,6 @@ C:\GitAplicacao\TDC\Palestra\Palestra\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\GitAplicacao\TDC\Palestra\Palestra\bin\Microsoft.Owin.Security.xml
 C:\GitAplicacao\TDC\Palestra\Palestra\bin\Microsoft.Owin.Security.Cookies.xml
 C:\GitAplicacao\TDC\Palestra\Palestra\bin\Microsoft.Owin.Security.OAuth.xml
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\AutoMapper.Net4.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\AutoMapper.dll
+C:\GitAplicacao\TDC\Palestra\Palestra\bin\AutoMapper.xml

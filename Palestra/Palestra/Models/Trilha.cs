@@ -8,7 +8,6 @@ namespace Palestra.Models
 {
     public class Trilha : Entidade
     {
-        [Required(ErrorMessage = "Campo Obrigatório")]
         public string  Nome { get; set; }      
     }
 }

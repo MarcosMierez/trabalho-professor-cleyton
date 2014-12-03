@@ -1,4 +1,4 @@
-﻿@model Palestra.Models.Palestrante
+﻿@model Palestra.ViewModel.PalestranteViewModel
 <div class="panel panel-default">
     <div class="panel-heading">Cadastrar Palestrante</div>
     @Html.ValidationSummary(true)
@@ -17,8 +17,8 @@
                 <input type="text" id="Bio" class="form-control" name="Bio" />
                 @Html.ValidationMessageFor(x => x.Bio)
                 <br />
-                <label for="arquivo">Foto</label>
-                <input type="file" id="arquivo" name="arquivo" />
+                <label for="Foto">Foto</label>
+                <input type="file" id="Foto" name="Foto" value="@Model.Foto"/>
             </div>
             <br />
             

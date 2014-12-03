@@ -36,26 +36,15 @@ namespace Palestra.Aplicacao
         public int Inserir(Usuario usuario)
         {
             const string strQuery = "insert into Usuario (Id,Nome,Senha,Email,Permissao) values (@Id,@Nome,@Senha,@Email,@Permissao)";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",usuario.ID},
-                {"Nome",usuario.Nome},
-                {"Senha",usuario.Senha},
-                {"Email",usuario.Email},
-                {"Permissao",carregaPermissoes(usuario.Permissao)}
-            };
+            var parametros = SetaUsuarios(usuario);
             return contexto.ExecutaComando(strQuery, parametros);
-        }      
+        }
+
+        
         public int Alterar(Usuario usuario)
         {
             const string strQuery = "UPDATE  Usuario set Nome = @Nome , Email = @Email,Permissao = @Permissao Where Id = @Id";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",usuario.ID},
-                {"Nome",usuario.Nome},
-                {"Email",usuario.Email},
-                {"Permissao",carregaPermissoes(usuario.Permissao)}
-            };
+            var parametros = SetaUsuarios(usuario);
             return contexto.ExecutaComando(strQuery, parametros);
         }
         public int Excluir(string id)
@@ -161,5 +150,17 @@ namespace Palestra.Aplicacao
         {
             return permissoes.Split(',').ToList();
         }
+        private static Dictionary<string, object> SetaUsuarios(Usuario usuario)
+        {
+            var parametros = new Dictionary<string, object>()
+            {
+                {"Id",usuario.ID},
+                {"Nome",usuario.Nome},
+                {"Senha",usuario.Senha},
+                {"Email",usuario.Email},
+                {"Permissao",carregaPermissoes(usuario.Permissao)}
+            };
+            return parametros;
+        }      
     }
 }

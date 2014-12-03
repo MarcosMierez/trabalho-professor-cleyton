@@ -21,38 +21,19 @@ namespace Palestra.Aplicacao
             var salas = new List<Sala>();
             const string strQuery = "SELECT ID , Nome, Numero FROM Sala";
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, null);
-            foreach (var linha in linhas)
-            {
-                var tempSala = new Sala
-                {
-                    ID = linha["ID"],
-                    Nome = linha["Nome"],
-                    Numero =linha["Numero"]
-                };
-                salas.Add(tempSala);
-            }
+            SetaSalas(salas, linhas);
             return salas;
         }
         public int Inserir(Sala sala)
         {
             const string strQuery = "insert into Sala (Id,Nome,Numero) values (@Id,@Nome,@Numero)";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",sala.ID},
-                {"Nome",sala.Nome},
-                {"Numero",sala.Numero}
-            };
+            var parametros = SetaSalasPorID(sala);
             return contexto.ExecutaComando(strQuery, parametros);
         }
         public int Alterar(Sala sala)
         {
             const string strQuery = "UPDATE  Sala set Nome = @Nome , Numero = @Numero Where Id = @Id";
-            var parametros = new Dictionary<string, object>()
-            {
-                {"Id",sala.ID},
-                {"Nome",sala.Nome},
-                {"Numero",sala.Numero}
-            };
+            var parametros = SetaSalasPorID(sala);
             return contexto.ExecutaComando(strQuery, parametros);
         }
         public int Excluir(string id)
@@ -72,10 +53,10 @@ namespace Palestra.Aplicacao
                 {"ID",id}
             };
             var linhas = contexto.ExecutaComandoComRetorno(strQuery, parametros);
-            
+
             if (!linhas.Any())
                 return new Sala();
-            
+
             var sala = new Sala
             {
                 ID = linhas[0]["Id"],
@@ -84,7 +65,29 @@ namespace Palestra.Aplicacao
             };
             return sala;
         }
+        private void SetaSalas(List<Sala> salas, List<Dictionary<string, string>> linhas)
+        {
+            foreach (var linha in linhas)
+            {
+                var tempSala = new Sala
+                {
+                    ID = linha["ID"],
+                    Nome = linha["Nome"],
+                    Numero = linha["Numero"]
+                };
+                salas.Add(tempSala);
+            }
+        }
+        private Dictionary<string, object> SetaSalasPorID(Sala sala)
+        {
+            var parametros = new Dictionary<string, object>()
+            {
+                {"Id",sala.ID},
+                {"Nome",sala.Nome},
+                {"Numero",sala.Numero}
+            };
+            return parametros;
+        }
 
-
-}
+    }
 }

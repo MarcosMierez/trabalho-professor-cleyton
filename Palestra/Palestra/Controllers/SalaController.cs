@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+using Palestra.ViewModel;
 
 namespace Palestra.Controllers
 {
@@ -21,7 +23,7 @@ namespace Palestra.Controllers
         {
             appSala = new SalaAplicacao();
         }
-       [AllowAnonymous]
+        [Authorize(Roles = "sala_ver")]
         public ActionResult Index()
         {
             var listaSalas = appSala.Listar();
@@ -30,15 +32,21 @@ namespace Palestra.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Cadastrar()
         {
-            return View(new Sala());
+            return View(new SalaViewModel());
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Cadastrar(Sala sala)
+        public ActionResult Cadastrar(SalaViewModel sala)
         {
+            var tempSala = new Sala
+            {
+                ID = sala.ID,
+                Nome = sala.Nome,
+                Numero = sala.Numero
+            };
             if (ModelState.IsValid)
             {
-                appSala.Inserir(sala);
+                appSala.Inserir(tempSala);
                 this.Flash("Salvo com sucesso");
                 return RedirectToAction("Index", "Sala");
             }
@@ -49,15 +57,28 @@ namespace Palestra.Controllers
         public ActionResult Editar(string id)
         {
             var sala = appSala.ListarPorId(id);
-            return View(sala);
+            var tempsala = new SalaViewModel
+            {
+                ID = sala.ID,
+                Nome = sala.Nome,
+                Numero = sala.Numero
+
+            };
+            return View(tempsala);
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Editar(Sala sala)
+        public ActionResult Editar(SalaViewModel sala)
         {
+            var tempSala = new Sala()
+            {
+                ID = sala.ID,
+                Nome = sala.Nome,
+                Numero = sala.Numero
+            };
             if (ModelState.IsValid)
             {
-                appSala.Alterar(sala);
+                appSala.Alterar(tempSala);
                 this.Flash("Sala alterada com sucesso");
                 return RedirectToAction("Index", "Sala");
             }
@@ -74,6 +95,13 @@ namespace Palestra.Controllers
         [HttpPost]
         public ActionResult Delete(Sala sala)
         {
+            //checar se pode ou nao excluir
+            var salasComPalestras =(new PalestraAplicacao()).SalasComPalestras(sala.ID);
+            if (salasComPalestras.Any())
+            {
+                 this.Flash("Esta Sala Nao pode ser removida pois ha palestras vinculadas a ela",LoggerEnum.Info);
+                 return RedirectToAction("Index", "Sala");
+            }
             appSala.Excluir(sala.ID);
             this.Flash("Sala removida com sucesso");
 

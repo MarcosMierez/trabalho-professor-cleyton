@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Palestra.Models;
 using Palestra.Aplicacao;
+using Palestra.ViewModel;
 
 namespace Palestra.Controllers
 {
@@ -17,7 +18,7 @@ namespace Palestra.Controllers
         {
             appTrilha = new TrilhaAplicacao();
         }
-      [AllowAnonymous]
+       [Authorize(Roles = "trilha_ver")]
         public ActionResult Index()
         {
             var listaTrilhas = appTrilha.Listar();
@@ -26,16 +27,21 @@ namespace Palestra.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Cadastrar()
         {
-            return View(new Trilha());
+            return View(new TrilhaViewModel());
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Cadastrar(Trilha trilha)
+        public ActionResult Cadastrar(TrilhaViewModel trilha)
         {
+            var tempTrilha = new Trilha()
+            {
+                ID = trilha.ID,
+                Nome = trilha.Nome
+            };
             if (ModelState.IsValid)
             {
                 this.Flash("Trilha adicionada com sucesso");
-                appTrilha.Inserir(trilha);
+                appTrilha.Inserir(tempTrilha);
                 return RedirectToAction("Index", "Trilha");
             }
             this.Flash("Preencha todos os dados",LoggerEnum.Warning);
@@ -44,7 +50,6 @@ namespace Palestra.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Editar(string id)
         {
-
             var trilha = appTrilha.ListarPorId(id);
             return View(trilha);
         }
