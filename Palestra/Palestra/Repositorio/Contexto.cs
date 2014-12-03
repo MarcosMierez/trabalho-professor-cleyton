@@ -18,7 +18,7 @@ namespace Palestra.Repositorio
 
         private static string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["TDCbd"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["TDCbd"].ConnectionString ?? ConfigurationManager.AppSettings.Get("MYSQL_CONNECTION_STRING");
         }
 
         public Contexto()
